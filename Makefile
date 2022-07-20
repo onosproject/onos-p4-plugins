@@ -10,6 +10,8 @@ ONOS_P4_PLUGIN_VERSION := latest
 ONOS_BUILD_VERSION := v1.0
 ONOS_PROTOC_VERSION := v1.0.2
 
+BASIC_PLUGIN_NAME := p4plugin-docker-basic-1.0.0
+
 BUF_VERSION := 1.0.0
 
 build-tools:=$(shell if [ ! -d "./build/build-tools" ]; then cd build && git clone https://github.com/onosproject/build-tools.git; fi)
@@ -20,8 +22,12 @@ mod-update: # @HELP Download the dependencies to the vendor folder
 	go mod vendor
 
 test: # @HELP run go test on projects
-test: mod-update build linters license gofmt images
+test: mod-update deps build linters license
 	go test ./pkg/...
+
+jenkins-test:  # @HELP run the unit tests and source code validation producing a junit style report for Jenkins
+jenkins-test: build deps license linters jenkins-tools
+	TEST_PACKAGES=`go list github.com/onosproject/onos-p4-plugins/...` ./build/build-tools/build/jenkins/make-unit
 
 PHONY:build
 build: # @HELP build all libraries
@@ -46,7 +52,16 @@ images: build p4plugin-docker-basic-1.0.0
 kind: # @HELP build Docker images and add them to the currently configured kind cluster
 kind: images
 	@if [ "`kind get clusters`" = '' ]; then echo "no kind cluster found" && exit 1; fi
-	kind load docker-image onosproject/p4plugin-docker-basic-1.0.0:${ONOS_P4_PLUGIN_VERSION}
+	kind load docker-image onosproject/${BASIC_PLUGIN_NAME}:${ONOS_P4_PLUGIN_VERSION}
+
+docker-push-latest: docker-login
+	docker push onosproject/p4plugin-docker-basic-1.0.0:latest
+
+publish: # @HELP publish version on github and dockerhub
+	if ! grep dev VERSION.fb-ah-xapp; then ./build/build-tools/publish-version ${VERSION} onosproject/${BASIC_PLUGIN_NAME}; fi
+
+jenkins-publish: images docker-push-latest # @HELP Jenkins calls this to publish artifacts
+	./build/build-tools/release-merge-commit
 
 clean:: # @HELP remove all the build artifacts
 	rm -rf ./build/_output ./vendor ./cmd/onos-p4-plugins/onos-p4-plugins
