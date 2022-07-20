@@ -26,7 +26,7 @@ build/_output/basic.so.1.0.0: # @HELP build the basic.so.1.0.0
 PHONY: p4plugin-docker-basic-1.0.0
 p4plugin-docker-basic-1.0.0: # @HELP build basic 1.0.0 plugin Docker image
 	./build/bin/build-deps basic ${WCMP_APP_MOD}
-	docker build . -f build/docker/Dockerfile \
+	docker build . -f plugins/basic/docker/Dockerfile \
 			--build-arg PLUGIN_MAKE_TARGET="basic" \
 			--build-arg PLUGIN_MAKE_VERSION="1.0.0" \
 			-t onosproject/p4plugin-docker-basic-1.0.0:${ONOS_P4_PLUGIN_VERSION}

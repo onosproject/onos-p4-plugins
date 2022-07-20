@@ -5,6 +5,7 @@ go 1.16
 require (
 	github.com/atomix/atomix-go-client v0.6.2 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
+	github.com/golang/protobuf v1.5.2
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/onosproject/onos-api/go v0.9.24 // indirect
 	github.com/onosproject/onos-lib-go v0.8.16
