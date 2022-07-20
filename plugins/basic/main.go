@@ -4,6 +4,8 @@
 
 package main
 
-func main() {
-	
-}
+import (
+	"github.com/onosproject/onos-p4-plugins/plugins/basic/plugin"
+)
+
+var P4Plugin plugin.P4Plugin
