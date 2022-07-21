@@ -10,7 +10,9 @@ ONOS_P4_PLUGIN_VERSION := latest
 ONOS_BUILD_VERSION := v1.0
 ONOS_PROTOC_VERSION := v1.0.2
 
-BASIC_PLUGIN_NAME := p4plugin-docker-basic-1.0.0
+BASIC_PLUGIN_IMAGE_NAME := p4plugin-docker-basic-1.0.0
+BASIC_PLUGIN_TAG_NAME := p4plugin-basic-1.0.0
+
 
 BUF_VERSION := 1.0.0
 
@@ -52,13 +54,13 @@ images: build p4plugin-docker-basic-1.0.0
 kind: # @HELP build Docker images and add them to the currently configured kind cluster
 kind: images
 	@if [ "`kind get clusters`" = '' ]; then echo "no kind cluster found" && exit 1; fi
-	kind load docker-image onosproject/${BASIC_PLUGIN_NAME}:${ONOS_P4_PLUGIN_VERSION}
+	kind load docker-image onosproject/${BASIC_PLUGIN_IMAGE_NAME}:${ONOS_P4_PLUGIN_VERSION}
 
 docker-push-latest: docker-login
 	docker push onosproject/p4plugin-docker-basic-1.0.0:latest
 
 publish: # @HELP publish version on github and dockerhub
-	if ! grep dev plugins/basic/VERSION; then ./build/build-tools/publish-version ${BASIC_PLUGIN_NAME}/${VERSION} onosproject/${BASIC_PLUGIN_NAME}; fi
+	if ! grep dev plugins/basic/VERSION; then ./build/build-tools/publish-version ${BASIC_PLUGIN_TAG_NAME}/${VERSION} onosproject/${BASIC_PLUGIN_IMAGE_NAME}; fi
 
 jenkins-publish: images docker-push-latest # @HELP Jenkins calls this to publish artifacts
 	VERSIONFILE=plugins/basic/VERSION ./build/build-tools/release-merge-commit
