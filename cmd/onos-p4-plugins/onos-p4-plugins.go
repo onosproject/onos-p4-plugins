@@ -158,7 +158,12 @@ func (r *moduleResolver) fetchMod(target string) (*modfile.File, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer os.RemoveAll(fakeModDir)
+	defer func(path string) {
+		err := os.RemoveAll(path)
+		if err != nil {
+			return
+		}
+	}(fakeModDir)
 
 	// Generate a temporary module with which to pull the target module
 	fakeMod := []byte("module m\n")
