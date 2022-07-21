@@ -61,7 +61,7 @@ publish: # @HELP publish version on github and dockerhub
 	if ! grep dev plugins/basic/VERSION; then ./build/build-tools/publish-version ${VERSION} onosproject/${BASIC_PLUGIN_NAME}; fi
 
 jenkins-publish: images docker-push-latest # @HELP Jenkins calls this to publish artifacts
-	VERSIONFILE=plugins/basic/VERSION ../build-tools/release-merge-commit
+	VERSIONFILE=plugins/basic/VERSION ./build/build-tools/release-merge-commit
 
 clean:: # @HELP remove all the build artifacts
 	rm -rf ./build/_output ./vendor ./cmd/onos-p4-plugins/onos-p4-plugins
