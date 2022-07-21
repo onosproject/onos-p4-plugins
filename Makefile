@@ -58,7 +58,7 @@ docker-push-latest: docker-login
 	docker push onosproject/p4plugin-docker-basic-1.0.0:latest
 
 publish: # @HELP publish version on github and dockerhub
-	if ! grep dev plugins/basic/VERSION; then ./build/build-tools/publish-version ${VERSION} onosproject/${BASIC_PLUGIN_NAME}; fi
+	if ! grep dev plugins/basic/VERSION; then ./build/build-tools/publish-version ${BASIC_PLUGIN_NAME}/${VERSION} onosproject/${BASIC_PLUGIN_NAME}; fi
 
 jenkins-publish: images docker-push-latest # @HELP Jenkins calls this to publish artifacts
 	VERSIONFILE=plugins/basic/VERSION ./build/build-tools/release-merge-commit
