@@ -15,6 +15,14 @@ BUF_VERSION := 1.0.0
 build-tools:=$(shell if [ ! -d "./build/build-tools" ]; then cd build && git clone https://github.com/onosproject/build-tools.git; fi)
 include ./build/build-tools/make/onf-common.mk
 
+mod-update: # @HELP Download the dependencies to the vendor folder
+	go mod tidy
+	go mod vendor
+
+test: # @HELP run go test on projects
+test: mod-update build linters license gofmt images
+	go test ./pkg/...
+
 PHONY:build
 build: # @HELP build all libraries
 build: build/_output/basic.so.1.0.0
@@ -39,3 +47,9 @@ kind: # @HELP build Docker images and add them to the currently configured kind 
 kind: images
 	@if [ "`kind get clusters`" = '' ]; then echo "no kind cluster found" && exit 1; fi
 	kind load docker-image onosproject/p4plugin-docker-basic-1.0.0:${ONOS_P4_PLUGIN_VERSION}
+
+clean:: # @HELP remove all the build artifacts
+	rm -rf ./build/_output ./vendor ./cmd/onos-p4-plugins/onos-p4-plugins
+	rm -fr plugins/*/vendor
+	rm -rf ./build/_input
+	go clean -testcache github.com/onosproject/onos-p4-plugins/...
