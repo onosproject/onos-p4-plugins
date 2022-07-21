@@ -36,6 +36,11 @@ func (p *P4Plugin) InitPlugin() error {
 	return nil
 }
 
+// GetP4Info returns P4 info
+func (p *P4Plugin) GetP4Info() (*p4configapi.P4Info, error) {
+	return p.p4Info, nil
+}
+
 // GetPkgInfo returns P4 Pkg info
 func (p *P4Plugin) GetPkgInfo() (*p4configapi.PkgInfo, error) {
 	if p.p4Info != nil {
