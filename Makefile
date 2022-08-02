@@ -84,7 +84,7 @@ publish: # @HELP publish version on github and dockerhub
 
 
 jenkins-publish: images docker-push-latest # @HELP Jenkins calls this to publish artifacts
-	VERSIONFILE=plugins/basic/VERSION ./build/build-tools/release-merge-commit \
+	VERSIONFILE=plugins/basic/VERSION ./build/build-tools/release-merge-commit
 	VERSIONFILE=plugins/middleblock/VERSION ./build/build-tools/release-merge-commit
 
 clean:: # @HELP remove all the build artifacts
