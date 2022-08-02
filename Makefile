@@ -79,12 +79,13 @@ docker-push-latest: docker-login
 
 publish: # @HELP publish version on github and dockerhub
 	if ! grep dev plugins/basic/VERSION; then ./build/build-tools/publish-version ${BASIC_PLUGIN_TAG_NAME}/${VERSION} onosproject/${BASIC_PLUGIN_IMAGE_NAME}; fi \
-    if ! grep dev plugins/middleblock/VERSION; then ./build/build-tools/publish-version ${MIDDLEBLOCK_PLUGIN_TAG_NAME}/${VERSION} onosproject/${MIDDLEBLOCK_PLUGIN_IMAGE_NAME}; fi
+	if ! grep dev plugins/middleblock/VERSION; then ./build/build-tools/publish-version ${MIDDLEBLOCK_PLUGIN_TAG_NAME}/${VERSION} onosproject/${MIDDLEBLOCK_PLUGIN_IMAGE_NAME}; fi
 
 
 
 jenkins-publish: images docker-push-latest # @HELP Jenkins calls this to publish artifacts
-	VERSIONFILE=plugins/basic/VERSION ./build/build-tools/release-merge-commit
+	VERSIONFILE=plugins/basic/VERSION ./build/build-tools/release-merge-commit \
+	VERSIONFILE=plugins/middleblock/VERSION ./build/build-tools/release-merge-commit
 
 clean:: # @HELP remove all the build artifacts
 	rm -rf ./build/_output ./vendor ./cmd/onos-p4-plugins/onos-p4-plugins
