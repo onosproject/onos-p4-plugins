@@ -78,8 +78,8 @@ docker-push-latest: docker-login
 
 
 publish: # @HELP publish version on github and dockerhub
-	if ! grep dev plugins/basic/VERSION; then ./build/build-tools/publish-version ${BASIC_PLUGIN_TAG_NAME}/${VERSION} onosproject/${BASIC_PLUGIN_IMAGE_NAME}; fi
-	if ! grep dev plugins/middleblock/VERSION; then ./build/build-tools/publish-version ${MIDDLEBLOCK_PLUGIN_TAG_NAME}/${VERSION} onosproject/${MIDDLEBLOCK_PLUGIN_IMAGE_NAME}; fi
+	if ! grep dev plugins/basic/VERSION; then ./build/build-tools/publish-version ${BASIC_PLUGIN_TAG_NAME}-${VERSION} onosproject/${BASIC_PLUGIN_IMAGE_NAME}; fi
+	if ! grep dev plugins/middleblock/VERSION; then ./build/build-tools/publish-version ${MIDDLEBLOCK_PLUGIN_TAG_NAME}-${VERSION} onosproject/${MIDDLEBLOCK_PLUGIN_IMAGE_NAME}; fi
 
 
 
