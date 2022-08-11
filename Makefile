@@ -4,7 +4,7 @@
 
 export GO111MODULE=on
 
-WCMP_APP_MOD ?= github.com/onosproject/wcmp-app@master
+DEVICE_PROVISIONER_APP_MOD ?= github.com/onosproject/device-provisioner@master
 
 ONOS_P4_PLUGIN_VERSION := latest
 ONOS_BUILD_VERSION := v1.0
@@ -47,7 +47,7 @@ build/_output/middleblock.so.1.0.0: # @HELP build the middleblock.so.1.0.0
 
 PHONY: p4plugin-docker-basic-1.0.0
 p4plugin-docker-basic-1.0.0: # @HELP build basic 1.0.0 plugin Docker image
-	./build/bin/build-deps basic ${WCMP_APP_MOD}
+	./build/bin/build-deps basic ${DEVICE_PROVISIONER_APP_MOD}
 	docker build . -f plugins/basic/docker/Dockerfile \
 			--build-arg PLUGIN_MAKE_TARGET="basic" \
 			--build-arg PLUGIN_MAKE_VERSION="1.0.0" \
@@ -56,7 +56,7 @@ p4plugin-docker-basic-1.0.0: # @HELP build basic 1.0.0 plugin Docker image
 
 PHONY: p4plugin-docker-middleblock-1.0.0
 p4plugin-docker-middleblock-1.0.0: # @HELP build basic 1.0.0 plugin Docker image
-	./build/bin/build-deps middleblock ${WCMP_APP_MOD}
+	./build/bin/build-deps middleblock ${DEVICE_PROVISIONER_APP_MOD}
 	docker build . -f plugins/middleblock/docker/Dockerfile \
 			--build-arg PLUGIN_MAKE_TARGET="middleblock" \
 			--build-arg PLUGIN_MAKE_VERSION="1.0.0" \
