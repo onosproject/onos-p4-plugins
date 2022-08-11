@@ -6,10 +6,10 @@ package plugin
 
 import (
 	_ "embed"
-	"github.com/golang/protobuf/proto"
 	"github.com/onosproject/onos-lib-go/pkg/errors"
 	"github.com/onosproject/onos-lib-go/pkg/logging"
 	p4configapi "github.com/p4lang/p4runtime/go/p4/config/v1"
+	"google.golang.org/protobuf/encoding/prototext"
 )
 
 var log = logging.GetLogger()
@@ -28,7 +28,7 @@ type P4Plugin struct {
 // InitPlugin initialize P4 plugin using P4Info and P4 device config
 func (p *P4Plugin) InitPlugin() error {
 	p4Info := &p4configapi.P4Info{}
-	if err := proto.UnmarshalText(string(p4InfoBytes), p4Info); err != nil {
+	if err := prototext.Unmarshal(p4InfoBytes, p4Info); err != nil {
 		return errors.NewInvalid("failed to decode P4Info Protobuf message", err)
 	}
 	p.p4Info = p4Info
