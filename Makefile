@@ -18,6 +18,7 @@ MIDDLEBLOCK_PLUGIN_TAG_NAME := p4plugin-middleblock-1.0.0
 
 BUF_VERSION := 1.0.0
 
+
 build-tools:=$(shell if [ ! -d "./build/build-tools" ]; then cd build && git clone https://github.com/onosproject/build-tools.git; fi)
 include ./build/build-tools/make/onf-common.mk
 
