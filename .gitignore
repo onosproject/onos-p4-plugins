@@ -22,3 +22,4 @@ vendor/
 build/build-tools
 coverage.xml
 report.xml
+onos-p4-plugins
