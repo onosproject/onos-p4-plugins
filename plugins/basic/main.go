@@ -10,6 +10,7 @@ import (
 	"os"
 )
 
+// P4Plugin p4 plugin instance
 var P4Plugin plugin.P4Plugin
 
 func init() {

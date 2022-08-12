@@ -20,6 +20,7 @@ var p4InfoBytes []byte
 //go:embed artifacts/basic_bmv2.json
 var p4DeviceConfig []byte
 
+// P4Plugin p4 plugin struct
 type P4Plugin struct {
 	p4Info         *p4configapi.P4Info
 	p4DeviceConfig []byte
