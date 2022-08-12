@@ -9,15 +9,15 @@ on:
   push:
     branches:
       - master
-      - staging
       - main
-      - develop
+    paths:
+      - 'plugins/basic/**'
   pull_request:
     branches:
       - master
       - main
-      - staging
-      - develop
+    paths:
+      - 'plugins/basic/**'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -57,4 +57,5 @@ jobs:
 
       # Run testing on the code
       - name: Run building and testing
+        working-directory: plugins/basic
         run: make test

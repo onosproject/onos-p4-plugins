@@ -4,12 +4,12 @@
 
 export GO111MODULE=on
 
-build-tools:=$(shell if [ ! -d "./build/build-tools" ]; then cd build && git clone https://github.com/onosproject/build-tools.git; fi)
-include ./build/build-tools/make/onf-common.mk
+#build-tools:=$(shell if [ ! -d "./build/build-tools" ]; then cd build && git clone https://github.com/onosproject/build-tools.git; fi)
+#include ./build/build-tools/make/onf-common.mk
 
 
 test: # @HELP run go test on projects
-test: build linters license
+test: build 
 
 
 PHONY: build
