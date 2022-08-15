@@ -3,7 +3,7 @@ module github.com/onosproject/onos-p4-plugins/plugins/middleblock
 go 1.18
 
 require (
-	github.com/onosproject/onos-lib-go v0.8.17
+	github.com/onosproject/onos-lib-go v0.9.0
 	github.com/p4lang/p4runtime v1.4.0-rc.5
 	github.com/stretchr/testify v1.7.1
 	google.golang.org/protobuf v1.28.0
@@ -11,7 +11,7 @@ require (
 
 require (
 	github.com/Shopify/sarama v1.31.1 // indirect
-	github.com/atomix/atomix-go-framework v0.10.0 // indirect
+	github.com/atomix/runtime/sdk v0.3.4 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/eapache/go-resiliency v1.2.0 // indirect
 	github.com/eapache/go-xerial-snappy v0.0.0-20180814174437-776d5712da21 // indirect
@@ -36,7 +36,6 @@ require (
 	github.com/pierrec/lz4 v2.6.1+incompatible // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
-	github.com/rogpeppe/go-internal v1.8.1 // indirect
 	github.com/spf13/afero v1.8.2 // indirect
 	github.com/spf13/cast v1.4.1 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
