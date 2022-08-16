@@ -1,3 +1,6 @@
+![Build](https://github.com/onosproject/onos-p4-plugins/workflows/build/badge.svg)
+
+
 <!--
 SPDX-FileCopyrightText: 2019-present Open Networking Foundation <info@opennetworking.org>
 
