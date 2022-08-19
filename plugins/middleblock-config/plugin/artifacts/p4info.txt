@@ -1,5 +1,5 @@
 pkg_info {
-  name: "middleblock"
+  name: "middleblock-config"
   version: "1.0.0"
   arch: "v1model"
 }

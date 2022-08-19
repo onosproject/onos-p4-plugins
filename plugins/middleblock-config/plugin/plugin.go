@@ -17,7 +17,7 @@ var log = logging.GetLogger()
 //go:embed artifacts/p4info.txt
 var p4InfoBytes []byte
 
-////go:embed artifacts/middleblock_bmv2.json
+//go:embed artifacts/middleblock.json
 var p4DeviceConfig []byte
 
 // P4Plugin p4 plugin struct
