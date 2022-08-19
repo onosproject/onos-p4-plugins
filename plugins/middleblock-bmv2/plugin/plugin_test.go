@@ -15,7 +15,7 @@ func TestP4Plugin_GetP4Info(t *testing.T) {
 	assert.NoError(t, err)
 	p4Info, err := plugin.GetP4Info()
 	assert.NoError(t, err)
-	assert.Equal(t, "middleblock-bmv2", p4Info.PkgInfo.Name)
+	assert.Equal(t, "middleblock_bmv2", p4Info.PkgInfo.Name)
 	assert.Equal(t, "1.0.0", p4Info.PkgInfo.Version)
 	_, err = plugin.GetP4DeviceConfig()
 	assert.NoError(t, err)
