@@ -10,8 +10,8 @@ test: build
 
 
 PHONY: build
-build: build-middleblock-config
+build: build-middleblock-bmv2
 
 build-middleblock-config: # @HELP build all libraries
-build-middleblock-config:
-	go build  -o build/_output/middleblock-config.so.1.0.0 -buildmode=plugin .
+build-middleblock-bmv2:
+	go build  -o build/_output/middleblock-bmv2.so.1.0.0 -buildmode=plugin .

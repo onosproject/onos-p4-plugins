@@ -1,5 +1,5 @@
 pkg_info {
-  name: "middleblock-config"
+  name: "middleblock_bmv2"
   version: "1.0.0"
   arch: "v1model"
 }
